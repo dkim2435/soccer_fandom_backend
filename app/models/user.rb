@@ -9,4 +9,8 @@ class User < ApplicationRecord
   def leagues
     super().uniq
   end
+
+  def add_to_fandom(team)
+    self.teams << team unless self.teams.detect{|t| t.id == team.id}
+  end
 end

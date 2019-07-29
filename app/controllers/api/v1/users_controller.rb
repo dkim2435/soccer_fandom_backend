@@ -1,5 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :authorized, only: [:create]
+
   
   def index
 		render json: User.all
@@ -10,8 +11,10 @@ class Api::V1::UsersController < ApplicationController
   end
 
 	def create
-    @user = User.create(user_params)
+    @user = User.new(user_params)
+
     if @user.valid?
+      @user.save
       @token = encode_token(user_id: @user.id)
       render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
     else
@@ -22,11 +25,30 @@ class Api::V1::UsersController < ApplicationController
   def show
 		@user = User.find(params[:id])
 		render json: @user
-	end
+  end
+  
+  def add_fandom
+    team = Team.find_by_id(team_params["id"])
+    if @user.teams.detect{|t| t.id == team.id}
+      render json: {text: "You have already fandomed this team", type: "error" }, status:405
+    else
+      @user.add_to_fandom(team)
+      render json: @user.teams, status: 200
 
   private
   
   def user_params
     params.require(:user).permit(:username, :email, :password)
+  end
+
+  def team_params
+    params.require(:team).permit(
+      :id, 
+      :teamname, 
+      :clubcolors, 
+      :venue, 
+      :image, 
+      :league
+    )
   end
 end

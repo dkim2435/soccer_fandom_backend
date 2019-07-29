@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :users, only: [:index, :show, :create]
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
+      post '/add_fandom' => 'users#add_fandom'
       
       resources :teams, only: [:index, :show]
       resources :leagues, only: [:index, :show]

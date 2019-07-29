@@ -14,7 +14,7 @@
 User.destroy_all
 Fandom.destroy_all
 
-evan = User.create(username: 'evan_0120', email: 'dkim2435@gmail.com', password: 'hi')
+evan = User.create(username: 'evan_0120', email: 'dkim2435@gmail.com', password: '123')
 evan.teams << [ Team.all[26], Team.all[29], Team.all[4], Team.all[7] ]
 
 # brian = User.create(username: 'rhehddlf', email: 'rhehddlf@gmail.com', password_digest: '00000')
