@@ -34,7 +34,9 @@ class Api::V1::UsersController < ApplicationController
     else
       @user.add_to_fandom(team)
       render json: @user.teams, status: 200
-
+    end
+  end
+  
   private
   
   def user_params
