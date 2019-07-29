@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get '/init-state', to: 'auth#init_state'
       get '/profile', to: 'users#profile'
       post '/add_fandom' => 'users#add_fandom'
+      delete '/removeFandom/:id' => 'users#remove_fandom'
       
       resources :teams, only: [:index, :show]
       resources :leagues, only: [:index, :show]

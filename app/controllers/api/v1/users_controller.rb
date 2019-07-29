@@ -33,7 +33,19 @@ class Api::V1::UsersController < ApplicationController
       render json: {text: "You have already fandomed this team", type: "error" }, status:405
     else
       @user.add_to_fandom(team)
-      render json: @user.teams, status: 200
+      render json: {user: UserSerializer.new(@user)}, status: 200
+    end
+  end
+
+  def remove_fandom
+    team = Team.find(params["id"])
+    fandom = @user.fandoms.detect{|f| f.team_id == team.id}
+    
+    if fandom
+      fandom.destroy
+      render json: {user: UserSerializer.new(@user)}, status: 200
+    else
+      render json: {text: "You do not have this fandom", type: "error" }, status:405
     end
   end
   
