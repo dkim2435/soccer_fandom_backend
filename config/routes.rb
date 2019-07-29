@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   
       resources :users, only: [:index, :show, :create]
       post '/login', to: 'auth#create'
+      get '/init-state', to: 'auth#init_state'
       get '/profile', to: 'users#profile'
       post '/add_fandom' => 'users#add_fandom'
       
