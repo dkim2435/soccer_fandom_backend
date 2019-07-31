@@ -61,7 +61,10 @@ class Api::V1::UsersController < ApplicationController
       :teamname, 
       :clubcolors, 
       :venue, 
-      :image, 
+      :image,
+      :founded,
+      :website,
+      :address,
       :league
     )
   end

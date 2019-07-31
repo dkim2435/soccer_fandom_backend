@@ -5,6 +5,9 @@ class CreateTeams < ActiveRecord::Migration[5.2]
       t.string :clubcolors
       t.string :venue
       t.string :image
+      t.string :founded
+      t.string :website
+      t.string :address
       t.references :league
       t.references :user
     end

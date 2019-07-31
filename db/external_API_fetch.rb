@@ -17,6 +17,9 @@ response["teams"].each { |team|
     clubcolors: team["clubColors"],
     venue: team["venue"],
     image: team["crestUrl"],
+    founded: team["founded"],
+    website: team["website"],
+    address: team["address"],
     league: League.last
   )
 }
@@ -30,6 +33,9 @@ response["teams"].each { |team|
     clubcolors: team["clubColors"],
     venue: team["venue"],
     image: team["crestUrl"],
+    founded: team["founded"],
+    website: team["website"],
+    address: team["address"],
     league: League.first
   )
 }
@@ -44,6 +50,9 @@ response["teams"].each { |team|
     clubcolors: team["clubColors"],
     venue: team["venue"],
     image: team["crestUrl"],
+    founded: team["founded"],
+    website: team["website"],
+    address: team["address"],
     league: League.second
   )
 }
@@ -58,6 +67,9 @@ response["teams"].each { |team|
     clubcolors: team["clubColors"],
     venue: team["venue"],
     image: team["crestUrl"],
+    founded: team["founded"],
+    website: team["website"],
+    address: team["address"],
     league: League.third
   )
 }
